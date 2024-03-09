@@ -9,12 +9,21 @@ i18next.addResourceBundle('ar', 'navigation', ar);
 
 const navigationConfig = [
   {
-    id: 'example-component',
-    title: 'Example',
-    translate: 'EXAMPLE',
-    type: 'item',
-    icon: 'heroicons-outline:star',
-    url: 'example',
+    id: 'dashboards',
+    title: 'Dashboards',
+    subtitle: 'Unique dashboard designs',
+    type: 'group',
+    icon: 'heroicons-outline:home',
+    translate: 'DASHBOARDS',
+    children: [
+      {
+        id: 'dashboards.project',
+        title: 'Project',
+        type: 'item',
+        icon: 'heroicons-outline:clipboard-check',
+        url: '/dashboards/project',
+      },
+    ],
   },
 ];
 
