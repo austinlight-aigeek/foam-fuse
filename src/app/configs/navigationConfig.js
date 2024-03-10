@@ -23,6 +23,13 @@ const navigationConfig = [
         icon: 'heroicons-outline:clipboard-check',
         url: '/dashboards/project',
       },
+      {
+        id: 'dashboards.analytics',
+        title: 'Analytics',
+        type: 'item',
+        icon: 'heroicons-outline:chart-pie',
+        url: '/dashboards/analytics',
+      },
     ],
   },
 ];
