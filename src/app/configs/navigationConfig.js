@@ -30,6 +30,13 @@ const navigationConfig = [
         icon: 'heroicons-outline:chart-pie',
         url: '/dashboards/analytics',
       },
+      {
+        id: 'apps.chat',
+        title: 'Chat',
+        type: 'item',
+        icon: 'heroicons-outline:chat-alt',
+        url: '/apps/chat',
+      },
     ],
   },
 ];

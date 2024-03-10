@@ -6,10 +6,12 @@ import SignInConfig from '../main/sign-in/SignInConfig';
 import SignUpConfig from '../main/sign-up/SignUpConfig';
 import SignOutConfig from '../main/sign-out/SignOutConfig';
 import dashboardsConfigs from '../main/dashboards/dashboardsConfigs';
+import appsConfigs from '../main/apps/appsConfigs';
 import Error404Page from '../main/404/Error404Page';
 import ExampleConfig from '../main/example/ExampleConfig';
 
 const routeConfigs = [
+  ...appsConfigs,
   ...dashboardsConfigs,
   ExampleConfig, 
   SignOutConfig, 
