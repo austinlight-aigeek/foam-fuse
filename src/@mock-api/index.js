@@ -1,3 +1,5 @@
+import './api/dashboards/analytics-api';
+import './api/dashboards/project-api';
 import './api/auth-api';
 import './api/notifications-api';
 import history from '@history';
@@ -9,4 +11,5 @@ if (module?.hot?.status() === 'apply') {
   const { pathname } = history.location;
   history.push('/loading');
   history.push({ pathname });
+  // comment
 }
