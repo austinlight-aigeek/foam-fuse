@@ -1,24 +1,24 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import FuseUtils from '@fuse/utils';
-import Input from '@mui/material/Input';
-import List from '@mui/material/List';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import { motion } from 'framer-motion';
-import { useContext, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import clsx from 'clsx';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import Box from '@mui/material/Box';
-import { lighten } from '@mui/material/styles';
-import ContactListItem from './ContactListItem';
-import { getChat } from '../../store/chatSlice';
-import { selectContacts } from '../../store/contactsSlice';
-import { selectChats } from '../../store/chatsSlice';
-import ContactAvatar from '../../ContactAvatar';
-import MainSidebarMoreMenu from './MainSidebarMoreMenu';
-import { ChatAppContext } from '../../ChatApp';
-import { selectUser } from '../../store/userSlice';
+import FuseScrollbars from "@fuse/core/FuseScrollbars";
+import FuseUtils from "@fuse/utils";
+import Input from "@mui/material/Input";
+import List from "@mui/material/List";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import { motion } from "framer-motion";
+import { useContext, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
+import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
+import Box from "@mui/material/Box";
+import { lighten } from "@mui/material/styles";
+import ContactListItem from "./ContactListItem";
+import { getChat } from "../../store/chatSlice";
+import { selectContacts } from "../../store/contactsSlice";
+import { selectChats } from "../../store/chatsSlice";
+import ContactAvatar from "../../ContactAvatar";
+import MainSidebarMoreMenu from "./MainSidebarMoreMenu";
+import { ChatAppContext } from "../../ChatApp";
+import { selectUser } from "../../store/userSlice";
 
 function MainSidebar(props) {
   const { setUserSidebarOpen } = useContext(ChatAppContext);
@@ -28,9 +28,7 @@ function MainSidebar(props) {
   const chats = useSelector(selectChats);
   const user = useSelector(selectUser);
 
-  console.log(user);
-
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
 
   function handleSearchText(event) {
     setSearchText(event.target.value);
@@ -42,7 +40,7 @@ function MainSidebar(props) {
         className="py-16 px-32 border-b-1"
         sx={{
           backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
+            theme.palette.mode === "light"
               ? lighten(theme.palette.background.default, 0.4)
               : lighten(theme.palette.background.default, 0.02),
         }}
@@ -77,7 +75,7 @@ function MainSidebar(props) {
                 fullWidth
                 value={searchText}
                 inputProps={{
-                  'aria-label': 'Search',
+                  "aria-label": "Search",
                 }}
                 onChange={handleSearchText}
               />
@@ -101,11 +99,19 @@ function MainSidebar(props) {
               contacts.length > 0 && chats.length > 0
                 ? chats.map((_chat) => ({
                     ..._chat,
-                    ...contacts.find((_contact) => _contact.id === _chat.contactId),
+                    ...contacts.find(
+                      (_contact) => _contact.id === _chat.contactId
+                    ),
                   }))
                 : [];
-            const filteredContacts = getFilteredArray([...contacts], searchText);
-            const filteredChatList = getFilteredArray([...chatListContacts], searchText);
+            const filteredContacts = getFilteredArray(
+              [...contacts],
+              searchText
+            );
+            const filteredChatList = getFilteredArray(
+              [...chatListContacts],
+              searchText
+            );
 
             const container = {
               show: {
@@ -129,7 +135,10 @@ function MainSidebar(props) {
               >
                 {filteredChatList.length > 0 && (
                   <motion.div variants={item}>
-                    <Typography className="font-medium text-20 px-32 py-24" color="secondary.main">
+                    <Typography
+                      className="font-medium text-20 px-32 py-24"
+                      color="secondary.main"
+                    >
                       Chats
                     </Typography>
                   </motion.div>
@@ -137,11 +146,17 @@ function MainSidebar(props) {
 
                 {filteredChatList.map((contact, index) => (
                   <motion.div variants={item} key={contact.id}>
-                    <div className={clsx(filteredChatList.length !== index + 1 && 'border-b-1')}>
+                    <div
+                      className={clsx(
+                        filteredChatList.length !== index + 1 && "border-b-1"
+                      )}
+                    >
                       <ContactListItem
                         chat
                         contact={contact}
-                        onContactClick={(contactId) => dispatch(getChat(contactId))}
+                        onContactClick={(contactId) =>
+                          dispatch(getChat(contactId))
+                        }
                       />
                     </div>
                   </motion.div>
@@ -149,7 +164,10 @@ function MainSidebar(props) {
 
                 {filteredContacts.length > 0 && (
                   <motion.div variants={item}>
-                    <Typography className="font-medium text-20 px-32 py-24" color="secondary.main">
+                    <Typography
+                      className="font-medium text-20 px-32 py-24"
+                      color="secondary.main"
+                    >
                       Contacts
                     </Typography>
                   </motion.div>
@@ -157,10 +175,16 @@ function MainSidebar(props) {
 
                 {filteredContacts.map((contact, index) => (
                   <motion.div variants={item} key={contact.id}>
-                    <div className={clsx(filteredContacts.length !== index + 1 && 'border-b-1')}>
+                    <div
+                      className={clsx(
+                        filteredContacts.length !== index + 1 && "border-b-1"
+                      )}
+                    >
                       <ContactListItem
                         contact={contact}
-                        onContactClick={(contactId) => dispatch(getChat(contactId))}
+                        onContactClick={(contactId) =>
+                          dispatch(getChat(contactId))
+                        }
                       />
                     </div>
                   </motion.div>
